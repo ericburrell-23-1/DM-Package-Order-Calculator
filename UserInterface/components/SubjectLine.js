@@ -22,10 +22,6 @@ const SubjectLine = ({ orderItem, onOrderChange }) => {
     onOrderChange({ coachQty });
   };
 
-  useEffect(() => {
-    console.log("OrderItem rendering:", orderItem);
-  }, [orderItem]);
-
   return (
     <div className="flex-container subject-line">
       <SubjectTypeSelector

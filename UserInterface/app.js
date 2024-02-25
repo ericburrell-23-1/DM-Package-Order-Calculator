@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import SubjectLine from "./components/SubjectLine";
+import { updateOrder, sendOrder } from "./utility/functions";
 
 function App() {
   const [orderItems, setOrderItems] = useState([
@@ -9,48 +10,12 @@ function App() {
   ]);
 
   const handleOrderItemChange = (updatedOrder, index) => {
-    setOrderItems((prevOrderItems) => {
-      const newOrderItems = prevOrderItems.map((item, i) => {
-        if (i === index) {
-          return { ...item, ...updatedOrder };
-        }
-        return item;
-      });
-      const lastItem = newOrderItems[newOrderItems.length - 1];
-      if (
-        lastItem.subjectType === "Team" ||
-        (lastItem.subjectType === "Individual" &&
-          (lastItem.package !== null || lastItem.package !== ""))
-      ) {
-        newOrderItems.push({
-          subjectType: "Individual",
-          package: null,
-          schoolQty: "1",
-          coachQty: "1",
-        });
-      }
-      // CHECK FOR MULTIPLE EMPTY INDIVIDUAL PACKAGES
-      const emptyIndividualIndex = newOrderItems.findIndex(
-        (item) =>
-          item.subjectType === "Individual" &&
-          (item.package === null || item.package === "")
-      );
-      if (emptyIndividualIndex !== -1) {
-        const remainingItems = newOrderItems.slice(emptyIndividualIndex + 1);
-        for (const item of remainingItems) {
-          if (
-            item.subjectType === "Individual" &&
-            (item.package === null || item.package === "")
-          ) {
-            const indexToRemove = newOrderItems.indexOf(item);
-            newOrderItems.splice(indexToRemove, 1);
-          }
-        }
-      }
+    updateOrder(updatedOrder, index, setOrderItems);
+  };
 
-      console.log("Order: ", orderItems);
-      return newOrderItems;
-    });
+  const handleCalcualateOrder = async () => {
+    const orderTotals = await sendOrder(orderItems);
+    console.log(orderTotals);
   };
 
   return (
@@ -64,6 +29,7 @@ function App() {
           onOrderChange={(o) => handleOrderItemChange(o, index)}
         />
       ))}
+      <button onClick={handleCalcualateOrder}>Calculate Order</button>
     </div>
   );
 }
