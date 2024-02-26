@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import SubjectLine from "./components/SubjectLine";
 import { updateOrder, sendOrder } from "./utility/functions";
+import SubjectLine from "./components/SubjectLine";
+import ResultsPopup from "./components/ResultsPopup";
 
 function App() {
   const [orderItems, setOrderItems] = useState([
     { subjectType: "Team", package: null, schoolQty: "1", coachQty: "1" },
     { subjectType: "Individual", package: null, schoolQty: "1", coachQty: "1" },
   ]);
+  const [results, setResults] = useState({});
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleOrderItemChange = (updatedOrder, index) => {
     updateOrder(updatedOrder, index, setOrderItems);
@@ -15,7 +18,9 @@ function App() {
 
   const handleCalcualateOrder = async () => {
     const orderTotals = await sendOrder(orderItems);
+    setResults(orderTotals.output);
     console.log(orderTotals);
+    setShowPopup(true);
   };
 
   return (
@@ -30,6 +35,11 @@ function App() {
         />
       ))}
       <button onClick={handleCalcualateOrder}>Calculate Order</button>
+      <ResultsPopup
+        open={showPopup}
+        setOpen={setShowPopup}
+        resultsData={results}
+      />
     </div>
   );
 }
