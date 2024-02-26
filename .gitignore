@@ -1,2 +1,3 @@
 venv/
 UserInterface/node_modules/
+.VSCodeCounter/
