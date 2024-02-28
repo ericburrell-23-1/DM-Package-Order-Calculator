@@ -1,10 +1,10 @@
 {
   "name": "userinterface",
   "version": "1.0.0",
-  "description": "",
+  "description": "Calculates total item quantities of photo orders",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --mode development",
+    "start": "electron .",
     "build": "webpack --mode production"
   },
   "keywords": [],
@@ -24,5 +24,9 @@
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.2"
-  }
+  },
+  "devDependencies": {
+    "electron": "^29.0.1"
+  },
+  "productName": "Order Counter"
 }

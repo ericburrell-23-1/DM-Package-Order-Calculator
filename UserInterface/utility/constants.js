@@ -1,1 +1,3 @@
-export const apiEndpoint = "http://127.0.0.1:5000/process_orders";
+const PORT = 4949;
+
+export const apiEndpoint = `http://localhost:${PORT}/process_orders`; //await getApiEndpoint();

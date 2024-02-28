@@ -1,6 +1,11 @@
+import sys
+import json
+import io
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import subprocess
+from waitress import serve
+from contextlib import redirect_stdout
+from order_counter import main as order_counter
 
 app = Flask(__name__)
 CORS(app)
@@ -26,20 +31,47 @@ def parse_output_data(output):
 
 @app.route('/process_orders', methods=['POST'])
 def process_orders():
-    data = request.json
-    packages_input = '\n'.join(data['packages']) + '\n' + 'done'
-    process = subprocess.Popen(['python', 'order_counter.py'],
-                               stdin=subprocess.PIPE,
-                               stdout=subprocess.PIPE,
-                               stderr=subprocess.PIPE,
-                               text=True)
-    stdout, stderr = process.communicate(input=packages_input)
-
-    if process.returncode == 0:
-        return parse_output_data(stdout)
-    else:
-        return jsonify({'success': False, 'error': stderr}), 500
+    try:
+        data = request.json
+        packages_input = '\n'.join(data['packages']) + '\n' + 'done'
+        input_stream = io.StringIO(packages_input)
+        output_stream = io.StringIO()
+        with redirect_stdout(output_stream):
+            sys.stdin = input_stream
+            order_counter()
+            sys.stdin = sys.__stdin__
+        return parse_output_data(output_stream.getvalue())
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = 4949
+    with open("port_info.json", "w") as f:
+        json.dump({"port": port}, f)
+    print(port)
+    serve(app, host='0.0.0.0', port=port)
+
+
+# DYNAMIC PORT ASSIGNMENT FUNCTION
+# def find_free_port():
+#     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+#         s.bind(('localhost', 0))
+#         return s.getsockname()[1]
+
+# DEBUGGING ROUTES
+# @app.route('/', methods=['GET'])
+# def home():
+#     try:
+#         result = io.StringIO()
+#         with redirect_stdout(result):
+#             hello_world()
+#         return result.getvalue(), 200
+#     except Exception as e:
+#         error_message = f"An error occurred: {str(e)}"
+#         return error_message, 500
+
+
+# @app.route('/no_python_exec_home', methods=['GET'])
+# def no_python_exec():
+#     return "Hello World"
