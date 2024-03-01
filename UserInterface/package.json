@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
+    "start-react": "webpack serve --mode development",
     "build": "webpack --mode production"
   },
   "keywords": [],

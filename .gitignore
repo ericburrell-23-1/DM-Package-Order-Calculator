@@ -1,7 +1,6 @@
 venv/
 UserInterface/node_modules/
 .VSCodeCounter/
-dist/
 bundle.js
 port_info.json
 UserInterface/bundle.js.LICENSE.txt

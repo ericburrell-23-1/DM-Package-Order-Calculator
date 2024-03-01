@@ -3,9 +3,12 @@ import "./components.css";
 
 const PackageSelector = ({ onPackageSelect }) => {
   return (
-    <div className="selector">
-      <label htmlFor="package">Package:</label>
+    <div className="">
+      <label className="package-label" htmlFor="package">
+        Package:
+      </label>
       <input
+        className="package"
         name="package"
         id="package"
         list="packages"

@@ -20,8 +20,29 @@ module.exports = {
         },
       },
       {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "../UserInterface/public/", // Output folder for images
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          {
+            loader: "style-loader",
+            options: {
+              // Inject CSS into the DOM using the <style> tag
+              injectType: "styleTag",
+            },
+          },
+          "css-loader",
+        ],
       },
     ],
   },
@@ -30,5 +51,11 @@ module.exports = {
       template: "./index.html",
     }),
   ],
-  devServer: {},
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, "public"),
+    },
+    hot: true,
+    watchFiles: ["./components/*.css"],
+  },
 };

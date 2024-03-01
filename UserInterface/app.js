@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { updateOrder, sendOrder } from "./utility/functions";
 import SubjectLine from "./components/SubjectLine";
 import ResultsPopup from "./components/ResultsPopup";
+import "./components/components.css";
 
 function App() {
   const [orderItems, setOrderItems] = useState([
@@ -25,8 +26,10 @@ function App() {
 
   return (
     <div>
-      <h1>Ciotti Sports Order Counter</h1>
-      <p>Enter packages &#40;separated by a space&#41; for each student:</p>
+      <div className="headline">
+        <h1>Ciotti Sports Order Counter</h1>
+        <p>Enter packages &#40;separated by a space&#41; for each student:</p>
+      </div>
       {orderItems.map((item, index) => (
         <SubjectLine
           key={index}
@@ -34,7 +37,9 @@ function App() {
           onOrderChange={(o) => handleOrderItemChange(o, index)}
         />
       ))}
-      <button onClick={handleCalcualateOrder}>Calculate Order</button>
+      <button className="calculate-button" onClick={handleCalcualateOrder}>
+        Calculate Order
+      </button>
       <ResultsPopup
         open={showPopup}
         setOpen={setShowPopup}

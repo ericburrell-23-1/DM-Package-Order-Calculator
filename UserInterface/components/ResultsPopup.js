@@ -10,7 +10,7 @@ const ResultsPopup = ({ open, setOpen, resultsData }) => {
         <a className="close" onClick={closeModal}>
           &times;
         </a>
-        <h1>Order Totals</h1>
+        <h1 className="popup-header">Order Totals</h1>
         <div className="results">
           {Object.keys(resultsData).map((key) => (
             <div key={key} className="results-line">

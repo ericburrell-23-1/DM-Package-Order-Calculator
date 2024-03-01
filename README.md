@@ -22,20 +22,20 @@ This project automates an order-counting process at D&M Imaging, making it easie
 
 1. Clone the repository.
 2. Navigate to the project directory.
-3. Install Python dependencies: `pip install -r requirements.txt`
-4. Install Node.js dependencies: `npm install`
+3. Install Node.js dependencies: `npm install`
+4. If making changes to backend code, install Python dependencies: `pip install -r requirements.txt`
 
 ## Usage
 
-1. Start the backend server: `python order_input_api.py`
-2. Navigate to the UserInterface directory: `cd UserInterface`, then start the frontend application using `npm start`.
-3. Open your browser and navigate to `http://localhost:8080`.
-4. Enter packages for each subject and click "Calculate Order" to view the summary.
+1. Start the electron application:
+2. Open your browser and navigate to `http://localhost:8080`.
+3. Enter packages for each subject and click "Calculate Order" to view the summary.
 
 ## Roadmap
 
-- [ ] Improve UI design for better user experience.
-- [ ] Refactor code to allow for greater readability and more modularization.
+- [ ] Add total price calculation to backend and display in results.
+- [ ] Add support for automatic label generation.
+- [ ] Refactor app.js allow for greater readability and more modularization.
 - [ ] Enhance error handling and validation.
 - [ ] Add support for other customers/packages.
 
