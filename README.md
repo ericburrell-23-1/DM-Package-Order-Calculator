@@ -27,7 +27,7 @@ This project automates an order-counting process at D&M Imaging, making it easie
 
 ## Usage
 
-1. Start the electron application: `cd UserInterface` then `npm start`.
+1. Start the electron application:
 2. Open your browser and navigate to `http://localhost:8080`.
 3. Enter packages for each subject and click "Calculate Order" to view the summary.
 
