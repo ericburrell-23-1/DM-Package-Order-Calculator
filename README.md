@@ -23,7 +23,9 @@ This project automates an order-counting process at D&M Imaging, making it easie
 1. Clone the repository.
 2. Navigate to the project directory.
 3. Install Node.js dependencies: `npm install`
-4. If making changes to backend code, install Python dependencies: `pip install -r requirements.txt`
+4. (Optional) If making changes to backend code, install Python dependencies: `pip install -r requirements.txt`
+5. Run the application via the batch script found in the `dist/scripts` directory, or by using `npm start`
+6. (Optional) Create a desktop shortcut to this script, and assign it the icon found in the `UserInterface/public` directory
 
 ## Usage
 

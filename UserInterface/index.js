@@ -25,7 +25,7 @@ function createWindow() {
 }
 
 function startFlaskServer() {
-  const serverPath = path.join(__dirname, "../dist/order_input_api");
+  const serverPath = path.join(__dirname, "./scripts/order_input_api.exe");
   const serverProcess = spawn(serverPath, { detached: true, stdio: "ignore" });
 
   serverProcess.unref();

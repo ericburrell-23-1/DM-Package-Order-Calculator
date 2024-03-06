@@ -6,11 +6,13 @@
   "scripts": {
     "start": "electron .",
     "start-react": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "electron-builder",
+    "build-frontend": "webpack --mode production",
+    "postinstall": "electron-builder install-app-deps"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.23.9",
     "@babel/preset-env": "^7.23.9",
@@ -27,7 +29,22 @@
     "webpack-dev-server": "^5.0.2"
   },
   "devDependencies": {
-    "electron": "^29.0.1"
+    "cross-env": "^7.0.3",
+    "electron": "^29.x.x",
+    "electron-builder": "^24.x.x"
   },
-  "productName": "Order Counter"
+  "productName": "Order Counter",
+  "build": {
+    "appId": "order.counter.dmimaging",
+    "productName": "Order Counter",
+    "buildDependenciesFromSource": true,
+    "nsis": {
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true
+    },
+    "win": {
+      "icon": "public/app-icon.png"
+    }
+  }
 }
