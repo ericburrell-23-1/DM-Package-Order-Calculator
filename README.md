@@ -24,13 +24,8 @@ This project automates an order-counting process at D&M Imaging, making it easie
 
 ## Usage
 
-<<<<<<< HEAD
 1. Start the backend server by running the following command in your terminal: `python app.py`.
 2. Open your browser and navigate to `http://localhost:4949`.
-=======
-1. Start the electron application:
-2. Open your browser and navigate to `http://localhost:8080`.
->>>>>>> 7a1aecc9013f9d3ccdd7e67f4cb4e7dd64fae96d
 3. Enter packages for each subject and click "Calculate Order" to view the summary.
 
 ## Roadmap
