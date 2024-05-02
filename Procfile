@@ -1,1 +1,1 @@
-web: cd UserInterface && npm install && npm run build && cd ../ && python app.py
+web: npm install && npm run build && python app.py
