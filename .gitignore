@@ -6,3 +6,4 @@ port_info.json
 UserInterface/bundle.js.LICENSE.txt
 order_input_api.spec
 build/
+node_modules

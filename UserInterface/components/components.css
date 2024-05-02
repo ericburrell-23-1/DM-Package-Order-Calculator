@@ -70,6 +70,10 @@
   color: white;
 }
 
+.subject-option {
+  color: #0008;
+}
+
 .subject.individual {
   padding-left: 8px;
 }
@@ -174,4 +178,47 @@
   width: 98%;
   height: 3px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.btn-print {
+  width: 90px;
+  height: 60px;
+  margin: 15px auto 25px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  color: rgba(255, 255, 255);
+  background-color: rgba(0, 0, 0, 0.75);
+  text-shadow: 1px 1px 1px rgba(204, 0, 0, 0.5);
+}
+
+.btn-print:hover {
+  cursor: pointer;
+}
+
+.btn-print .material-symbols-outlined {
+  font-size: 36px;
+}
+
+/* PRINT PAGE MARKUP */
+.print-out {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: white;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.print-out .modal {
+  overflow-y: visible;
+  margin-bottom: auto;
+}
+
+.print-out .btn-print {
+  display: none;
 }
