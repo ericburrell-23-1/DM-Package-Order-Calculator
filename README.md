@@ -15,22 +15,17 @@ This project automates an order-counting process at D&M Imaging, making it easie
 ### Prerequisites
 
 - Python 3.x
-- Node.js
-- npm
 
 ### Setup
 
 1. Clone the repository.
 2. Navigate to the project directory.
-3. Install Node.js dependencies: `npm install`
-4. (Optional) If making changes to backend code, install Python dependencies: `pip install -r requirements.txt`
-5. Run the application via the batch script found in the `dist/scripts` directory, or by using `npm start`
-6. (Optional) Create a desktop shortcut to this script, and assign it the icon found in the `UserInterface/public` directory
+3. (Optional) If making changes to backend code, install Python dependencies: `pip install -r requirements.txt`.
 
 ## Usage
 
-1. Start the electron application:
-2. Open your browser and navigate to `http://localhost:8080`.
+1. Start the backend server by running the following command in your terminal: `python app.py`.
+2. Open your browser and navigate to `http://localhost:4949`.
 3. Enter packages for each subject and click "Calculate Order" to view the summary.
 
 ## Roadmap

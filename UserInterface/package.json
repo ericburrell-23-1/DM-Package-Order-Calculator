@@ -4,11 +4,8 @@
   "description": "Calculates total item quantities of photo orders",
   "main": "index.js",
   "scripts": {
-    "start": "electron .",
-    "start-react": "webpack serve --mode development",
-    "build": "electron-builder",
-    "build-frontend": "webpack --mode production",
-    "postinstall": "electron-builder install-app-deps"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
