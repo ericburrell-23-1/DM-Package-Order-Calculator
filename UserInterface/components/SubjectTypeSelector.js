@@ -26,8 +26,12 @@ const SubjectTypeSelector = ({ onSelectSubjectType, currentValue }) => {
         onChange={(e) => handleTypeChange(e)}
         defaultValue={currentValue}
       >
-        <option value="Team">Team</option>
-        <option value="Individual">Individual</option>
+        <option className="subject-option" value="Team">
+          Team
+        </option>
+        <option className="subject-option" value="Individual">
+          Individual
+        </option>
       </select>
     </div>
   );
